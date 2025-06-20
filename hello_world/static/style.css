@@ -1,0 +1,106 @@
+body {
+ font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+ background-color: #f0f2f5;
+ margin: 0;
+ padding: 0;
+}
+
+.app {
+ max-width: 400px;
+ margin: 0 auto;
+ padding: 20px;
+}
+
+.header {
+ text-align: left;
+ margin-bottom: 20px;
+}
+
+.logo {
+ font-weight: bold;
+ font-size: 18px;
+ margin-bottom: 8px;
+}
+
+.logo .green {
+ color: #3cb371;
+}
+
+.header h1 {
+ margin: 0;
+ font-size: 20px;
+}
+
+.header p {
+ margin-top: 4px;
+ color: #555;
+}
+
+.counter {
+ background-color: #ffffff;
+ padding: 16px;
+ border-radius: 10px;
+ margin-bottom: 20px;
+ box-shadow: 0 0 10px #ddd;
+}
+
+.counter-text {
+ font-size: 16px;
+ margin-bottom: 12px;
+}
+
+.progress-bar {
+ background-color: #e0e0e0;
+ height: 10px;
+ border-radius: 5px;
+ overflow: hidden;
+ margin-bottom: 12px;
+}
+
+.progress-fill {
+ width: 35%;
+ height: 100%;
+ background-color: #3cb371;
+}
+
+.reset-btn {
+ padding: 8px 12px;
+ background-color: #eaeaea;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+}
+
+.quick-access {
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 20px;
+}
+
+.tile {
+ flex: 1;
+ background-color: #ffffff;
+ padding: 14px;
+ border-radius: 10px;
+ margin-right: 10px;
+ font-weight: 500;
+ box-shadow: 0 0 10px #ddd;
+ cursor: pointer;
+}
+
+.tile:last-child {
+ margin-right: 0;
+}
+
+.today h2 {
+ font-size: 16px;
+ margin-bottom: 12px;
+}
+
+.list-item {
+ background-color: #ffffff;
+ padding: 14px;
+ margin-bottom: 10px;
+ border-radius: 10px;
+ box-shadow: 0 0 10px #ddd;
+}

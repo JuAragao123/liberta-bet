@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d9d9d9;
+    margin: 0;
+}
+
+header {
+    background-color: #151a41;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.logo span {
+    color: #00e6e6;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+nav input {
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+}
+
+.perfil {
+    font-size: 20px;
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.box-escura {
+    background-color: #0f1a30;
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 330px;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.barra {
+    background-color: #ccc;
+    border-radius: 20px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progresso {
+    background-color: #4da6a6;
+    height: 100%;
+    width: 75%; /* valor ajustável */
+}
+
+.dias {
+    color: #55c0c0;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.diario {
+    background-color: #ffe6e6;
+    border-radius: 10px;
+    padding: 15px;
+    color: #000;
+    text-align: left;
+}
+
+.diario label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.diario input,
+.diario textarea {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.recaiu-label {
+    font-weight: bold;
+}
+
+.botoes-resposta {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.sim {
+    background-color: #4da6a6;
+    color: white;
+    border: none;
+    padding: 10px;
+    flex: 1;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nao {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px;
+    flex: 1;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.emergencia {
+    margin-top: 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+}

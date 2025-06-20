@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>LibertaBet - Diferença</title>
+    <link rel="stylesheet" href="static/diferencas.css">
+</head>
+<body>
+    <header>
+        <div class="logo">LIBERTA <span>BET</span></div>
+        <nav>
+            <input type="text" placeholder="Buscar...">
+            <div class="perfil">&#128100;</div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Entenda a diferença entre investimento e aposta</h2>
+        <section class="box investimento">
+            <h3>Investimento 📈</h3>
+            <ul>
+                {% for item in investimento %}
+                    <li>→ {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="box aposta">
+            <h3>Aposta 🏛️</h3>
+            <ul>
+                {% for item in aposta %}
+                    <li>→ {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <button class="botao-emergencia">Emergência</button>
+</body>
+</html>

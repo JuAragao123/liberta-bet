@@ -1,33 +1,39 @@
-{% load django_browser_reload %}
-{% load static %}
-
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="GitHub Codespaces ♥️ Django">
-    <meta name="author" content="GitHub Codespaces">
-    <meta name="generator" content="GitHub Codespaces">
-    <meta name="theme-color" content="#000000">
-    <title>{% block title %}{{ title }} | GitHub Codespaces ♥️ Django{% endblock %}</title>
-    
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <meta charset="UTF-8">
+    <title>LibertaBet - Login</title>
+    <link rel="stylesheet" href="static/login.css">
 </head>
-
 <body>
-    <div class="App">
-        <header class="App-header">
-            <img src="{% static 'Octocat.png' %}" class="App-logo" alt="logo" />
-            <p>
-                GitHub Codespaces <span class="heart">♥️</span> Django
-            </p>
-            <p class="small">
-                Edit <code>hello_world/templates/index.html</code> and see changes live!
-            </p>
-        </header>
-    </div>
-</body>
+    <header>
+        <div class="logo">LIBERTA <span>BET</span></div>
+        <nav>
+            <input type="text" placeholder="Buscar...">
+            <div class="perfil">&#128100;</div>
+        </nav>
+    </header>
 
+    <main class="login-container">
+        <section class="login-box">
+            <h2>Entrar na conta</h2>
+
+            <form action="/login" method="POST">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+
+                <button type="submit">Entrar</button>
+            </form>
+
+            <div class="esqueceu-senha">
+                <a href="/esqueceu-senha">Esqueceu sua senha?</a>
+            </div>
+        </section>
+    </main>
+
+    <button class="botao-emergencia">Emergência</button>
+</body>
 </html>
