@@ -1,7 +1,42 @@
 from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect
+
+usuarios = []  
+
+def cadastro_view(request):
+    if request.method == 'POST':
+        usuario = request.POST.get('usuario')
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+
+        usuarios.append({
+            'usuario': usuario,
+            'email': email,
+            'senha': senha
+        })
+
+        return redirect('login')
+
+    return render(request, 'cadastro.html')
+
+
 
 def login_view(request):
+    if request.method == 'POST':
+        usuario_input = request.POST.get('usuario')
+        senha_input = request.POST.get('senha')
+
+        for user in usuarios:
+            if user['usuario'] == usuario_input and user['senha'] == senha_input:
+                return redirect('pagina_inicial')
+
+        erro = "Usuário ou senha incorretos"
+        return render(request, 'index.html', {'erro': erro})
+
     return render(request, 'index.html')
+
+
 
 def pagina_inicial_view(request):
     return render(request, 'paginainicial.html')

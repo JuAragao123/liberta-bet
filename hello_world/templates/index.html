@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>LibertaBet - Login</title>
-    <link rel="stylesheet" href="static/login.css">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
 <body>
     <header>
@@ -18,9 +19,10 @@
         <section class="login-box">
             <h2>Entrar na conta</h2>
 
-            <form action="/login" method="POST">
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="usuario" required>
 
                 <label for="senha">Senha</label>
                 <input type="password" id="senha" name="senha" required>
@@ -28,8 +30,16 @@
                 <button type="submit">Entrar</button>
             </form>
 
+            {% if erro %}
+            <p style="color:red; margin-top: 10px;">{{ erro }}</p>
+            {% endif %}
+
             <div class="esqueceu-senha">
-                <a href="/esqueceu-senha">Esqueceu sua senha?</a>
+                <a href="#">Esqueceu sua senha?</a>
+            </div>
+
+            <div class="cadastro-link" style="text-align: center; margin-top: 10px;">
+                <a href="{% url 'cadastro' %}">Não tem conta? Cadastre-se</a>
             </div>
         </section>
     </main>
@@ -37,3 +47,4 @@
     <button class="botao-emergencia">Emergência</button>
 </body>
 </html>
+
