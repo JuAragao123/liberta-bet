@@ -1,33 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LibertaBet - Início</title>
-    <link rel="stylesheet" href="static/home.css">
+    <link rel="stylesheet" href="{% static 'paginainicial.css' %}">
 </head>
 <body>
-    <header>
-        <div class="logo">LIBERTA <span>BET</span></div>
-        <nav>
+    <header class="topo">
+        <div class="logo">
+            <img src="{% static 'logo.png' %}" alt="Logo LibertaBET">
+        </div>
+        <nav class="barra-navegacao">
+            <button class="menu-icon">&#9776;</button>
             <input type="text" placeholder="Buscar">
-            <div class="perfil">&#128100;</div>
+            <button class="perfil">&#128100;</button>
         </nav>
     </header>
 
-    <main class="home-container">
-        <section class="bemvindo">
-            <h2>Bem-vindo ao LibertaBET</h2>
+    <main class="conteudo">
+        <section class="boas-vindas">
+            <h1>Bem-vindo ao <span>LibertaBET</span></h1>
             <p>Como podemos ajudar você hoje?</p>
         </section>
 
         <section class="botoes">
-            <button class="opcao">💬 Depoimentos</button>
-            <button class="opcao">📈 Progresso</button>
-            <button class="opcao">🧠 Ajuda e autoavaliação</button>
-            <button class="opcao">🏛️ Investimento vs aposta</button>
+            <a class="botao" href="{% url 'depoimentos' %}">💬 Depoimentos</a>
+            <a class="botao" href="{% url 'progresso' %}">📊 Progresso</a>
+            <a class="botao" href="{% url 'apoio' %}">🫠 Ajuda e autoavaliação</a>
+            <a class="botao" href="{% url 'diferencas' %}">🏦 Investimento vs aposta</a>
         </section>
     </main>
 
-    <button class="botao-emergencia">Emergência</button>
+    
 </body>
 </html>

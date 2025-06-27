@@ -1,6 +1,7 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
-from django.shortcuts import render, redirect
+from django.contrib.auth.models import User  # ← ESSENCIAL
+from django.contrib.auth import authenticate, login
+
 
 usuarios = []  
 
@@ -10,29 +11,30 @@ def cadastro_view(request):
         email = request.POST.get('email')
         senha = request.POST.get('senha')
 
-        usuarios.append({
-            'usuario': usuario,
-            'email': email,
-            'senha': senha
-        })
+        if User.objects.filter(username=usuario).exists():
+            return render(request, 'cadastro.html', {'erro': 'Usuário já existe'})
+
+        user = User(username=usuario, email=email)
+        user.set_password(senha)  # Criptografa a senha corretamente
+        user.save()
 
         return redirect('login')
 
     return render(request, 'cadastro.html')
-
-
 
 def login_view(request):
     if request.method == 'POST':
         usuario_input = request.POST.get('usuario')
         senha_input = request.POST.get('senha')
 
-        for user in usuarios:
-            if user['usuario'] == usuario_input and user['senha'] == senha_input:
-                return redirect('pagina_inicial')
+        user = authenticate(username=usuario_input, password=senha_input)
 
-        erro = "Usuário ou senha incorretos"
-        return render(request, 'index.html', {'erro': erro})
+        if user is not None:
+            login(request, user)  # Cria a sessão
+            return redirect('pagina_inicial')
+        else:
+            erro = "Usuário ou senha incorretos"
+            return render(request, 'index.html', {'erro': erro})
 
     return render(request, 'index.html')
 

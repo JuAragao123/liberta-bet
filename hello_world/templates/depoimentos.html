@@ -1,41 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LibertaBet - Depoimentos</title>
-    <link rel="stylesheet" href="static/depoimentos.css">
+    <link rel="stylesheet" href="{% static 'depoimentos.css' %}">
 </head>
 <body>
-    <header>
-        <div class="logo">LIBERTA <span>BET</span></div>
-        <nav>
+    <header class="topo">
+        <div class="logo">
+            <img src="{% static 'logo.png' %}" alt="Logo LibertaBET">
+        </div>
+        <nav class="barra-navegacao">
+            <button class="menu-icon">&#9776;</button>
             <input type="text" placeholder="Buscar">
-            <div class="perfil">&#128100;</div>
+            <button class="perfil">&#128100;</button>
         </nav>
     </header>
 
-    <main class="depoimentos-container">
-        <h2>Depoimentos</h2>
-
-        <section class="card">
-            <h3>Felipe, 28 anos</h3>
-            <p>“Achei que podia ganhar dinheiro fácil. Perdi tudo: salário, família, paz. O vício tomou conta sem eu perceber.”</p>
-            <button class="saiba-mais">Saiba mais</button>
+    <main class="conteudo">
+        <section class="boas-vindas">
+            <h1>Depoimentos</h1>
+            <p>Leia relatos de quem enfrentou o problema de frente:</p>
         </section>
 
-        <section class="card">
-            <h3>Lucas, 22 anos</h3>
-            <p>“Começou como brincadeira. Quando vi, eu já mentia pra apostar e ficava ansioso o tempo todo. Foi por pouco que não perdi o controle.”</p>
-            <button class="saiba-mais">Saiba mais</button>
-        </section>
+        <section class="botoes">
+            <div class="botao">
+                <strong>Felipe, 28 anos</strong><br>
+                <p>“Achei que podia ganhar dinheiro fácil. Perdi tudo: salário, família, paz. O vício tomou conta sem eu perceber.”</p>
+            </div>
 
-        <section class="card">
-            <h3>Mariana, 26 anos</h3>
-            <p>“Apostava pouco, mas toda derrota me fazia querer recuperar. Achei que era diversão... até virar obsessão.”</p>
-            <button class="saiba-mais">Saiba mais</button>
+            <div class="botao">
+                <strong>Lucas, 22 anos</strong><br>
+                <p>“Começou como brincadeira. Quando vi, eu já mentia pra apostar e ficava ansioso o tempo todo. Foi por pouco que não perdi o controle.”</p>
+            </div>
+
+            <div class="botao">
+                <strong>Mariana, 26 anos</strong><br>
+                <p>“Apostava pouco, mas toda derrota me fazia querer recuperar. Achei que era diversão... até virar obsessão.”</p>
+            </div>
         </section>
     </main>
 
-    <button class="botao-emergencia">Emergência</button>
 </body>
 </html>

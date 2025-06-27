@@ -123,9 +123,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATICFILES_DIRS = [
     BASE_DIR / "hello_world" / "static",
 ]
@@ -142,8 +139,12 @@ MEDIA_ROOT = BASE_DIR / "hello_world" / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+ALLOWED_HOSTS = ['.app.github.dev', 'localhost', '127.0.0.1']
+
 CSRF_TRUSTED_ORIGINS = [
     'https://*.app.github.dev',
     'https://localhost:8001',
-    'http://localhost:8001'
+    'https://127.0.0.1:8001',
+    'https://localhost:8000',
+    'https://127.0.0.1:8000',
 ]
