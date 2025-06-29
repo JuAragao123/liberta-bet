@@ -1,152 +1,184 @@
+/* Fundo geral */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #d9d9d9;
     margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #f2f6f9, #dce2e8);
+    color: #333;
 }
 
-header {
-    background-color: #151a41;
+/* Cabeçalho */
+.topo {
+    background-color: #0a0a33;
+    padding: 15px 30px;
     color: white;
-    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 18px;
+.logo img {
+    height: 40px;
 }
 
-.logo span {
-    color: #00e6e6;
-}
-
-nav {
+.barra-navegacao {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-nav input {
-    padding: 5px;
-    border-radius: 4px;
+.barra-navegacao input {
+    padding: 8px 12px;
+    border-radius: 6px;
     border: none;
 }
 
 .perfil {
-    font-size: 20px;
-}
-
-.container {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.box-escura {
-    background-color: #0f1a30;
-    padding: 20px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 330px;
+    background: none;
+    font-size: 1.5em;
     color: white;
-    text-align: center;
+    border: none;
+    cursor: pointer;
 }
 
-h2 {
-    font-size: 24px;
+/* Conteúdo principal */
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 30px;
+}
+
+.titulo {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #0a0a33;
+}
+
+/* Grid de telhas */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Estilo das telhas */
+.tile {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.tile:hover {
+    transform: translateY(-4px);
+}
+
+.tile h2 {
+    font-size: 1.6em;
+    margin-top: 0;
     margin-bottom: 15px;
 }
 
-.barra {
-    background-color: #ccc;
-    border-radius: 20px;
-    height: 14px;
-    width: 100%;
-    margin-bottom: 10px;
-    overflow: hidden;
-}
-
-.progresso {
-    background-color: #4da6a6;
-    height: 100%;
-    width: 75%; /* valor ajustável */
-}
-
-.dias {
-    color: #55c0c0;
-    margin-bottom: 20px;
-    font-weight: bold;
+/* Telhas com cor temática */
+.resumo {
+    background: linear-gradient(to bottom right, #e8fce8, #f6fff6);
 }
 
 .diario {
-    background-color: #ffe6e6;
-    border-radius: 10px;
-    padding: 15px;
-    color: #000;
-    text-align: left;
+    background: linear-gradient(to bottom right, #ffe6e6, #fffafa);
 }
 
-.diario label {
-    font-weight: bold;
+.humor {
+    background: linear-gradient(to bottom right, #e6f0ff, #f9fbff);
+}
+
+.dica {
+    background: linear-gradient(to bottom right, #fff5cc, #fffce8);
+    font-style: italic;
+}
+
+/* Barra de progresso */
+.barra-progresso {
+    height: 24px;
+    background: #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
     margin-top: 10px;
-    display: block;
 }
 
-.diario input,
-.diario textarea {
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 14px;
-    background-color: #fff;
-}
-
-.recaiu-label {
+.preenchido {
+    height: 100%;
+    background: linear-gradient(to right, #4caf50, #81c784);
+    text-align: center;
+    line-height: 24px;
+    color: white;
     font-weight: bold;
 }
 
-.botoes-resposta {
+/* Formulário */
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+form textarea {
+    height: 90px;
+    resize: vertical;
+}
+
+/* Botões */
+.botoes {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
-    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.botoes button {
+    flex: 1;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
 }
 
 .sim {
-    background-color: #4da6a6;
-    color: white;
-    border: none;
-    padding: 10px;
-    flex: 1;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
+    background-color: #e74c3c;
+}
+
+.sim:hover {
+    background-color: #c0392b;
 }
 
 .nao {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 10px;
-    flex: 1;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
+    background-color: #2ecc71;
 }
 
-.emergencia {
-    margin-top: 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-weight: bold;
-    width: 100%;
-    cursor: pointer;
+.nao:hover {
+    background-color: #27ae60;
+}
+
+/* Emoji range */
+.emoji-range {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.emoji-range input {
+    flex: 1;
 }

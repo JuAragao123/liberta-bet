@@ -1,44 +1,203 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Progresso - LibertaBET</title>
-    <link rel="stylesheet" href="static/progresso.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progresso - LibertaBET</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #e3eaf4 0%, #fdfdfd 100%);
+      color: #222;
+      padding: 20px;
+    }
+
+    .titulo {
+      font-size: 3em;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .subtitulo {
+      margin-bottom: 40px;
+      font-size: 1.2em;
+      color: #555;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .tile {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #0a0a33;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 1em;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    .botoes button, .humor-botoes button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-right: 10px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .sim { background-color: #008060; color: white; }
+    .nao { background-color: #ccc; color: #222; }
+    .registrar { background-color: #0057b8; color: white; }
+
+    .progresso-barra {
+      background-color: #e0e0e0;
+      height: 18px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    .progresso-preenchido {
+      background-color: #4caf50;
+      height: 100%;
+      color: white;
+      text-align: center;
+      font-size: 0.9em;
+      line-height: 18px;
+      font-weight: 600;
+    }
+
+    input[type=range] {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .rodape {
+      text-align: center;
+      margin-top: 50px;
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">LIBERTA <span>BET</span></div>
-        <nav>
-            <input type="text" placeholder="Buscar">
-            <div class="perfil">&#128100;</div>
-        </nav>
-    </header>
+  <h1 class="titulo">Meu Progresso</h1>
+  <p class="subtitulo">Acompanhe sua jornada com sinceridade e sem julgamentos.</p>
 
-    <main class="container">
-        <section class="box-escura">
-            <h2>Progresso</h2>
+  <div class="grid">
+    <section class="tile">
+      <h2>Status Atual</h2>
+      <p><strong id="diasCount">0</strong> dias sem recaídas!</p>
+      <div class="progresso-barra">
+        <div id="diasBar" class="progresso-preenchido" style="width: 0%">0/30 dias</div>
+      </div>
+    </section>
 
-            <div class="barra">
-                <div class="progresso"></div>
-            </div>
-            <p class="dias">10 dias</p>
+    <section class="tile">
+      <h2>Diário de recaída</h2>
+      <label>O que aconteceu?</label>
+      <input type="text" id="relato" placeholder="Descreva o episódio...">
 
-            <div class="diario">
-                <label>Diário de recaída</label>
-                <input type="text" placeholder="O que aconteceu?">
+      <label>Como você se sentiu?</label>
+      <textarea id="sentimento" placeholder="Ex: ansioso, triste, sozinho..."></textarea>
 
-                <label>Como você estava se sentindo?</label>
-                <textarea placeholder="Digite aqui..."></textarea>
+      <label>Você recaiu?</label>
+      <div class="botoes">
+        <button id="btnSim" class="sim">Sim</button>
+        <button id="btnNao" class="nao">Não</button>
+      </div>
+    </section>
 
-                <p class="recaiu-label">Você recaiu?</p>
-                <div class="botoes-resposta">
-                    <button class="sim">Sim</button>
-                    <button class="nao">Não</button>
-                </div>
-            </div>
+    <section class="tile">
+      <h2>Como você está hoje?</h2>
+      <input type="range" id="humorRange" min="0" max="100">
+      <div class="humor-botoes">
+        <button id="btnRegistrarHumor" class="registrar">Registrar Humor</button>
+      </div>
+    </section>
 
-            
-        </section>
-    </main>
+    <section class="tile">
+      <h2>Dica do dia</h2>
+      <p>“Você é mais forte que o impulso. Cada dia sem recaída é uma vitória.”</p>
+    </section>
+  </div>
+
+  <footer class="rodape">
+    &copy; 2025 LibertaBET
+  </footer>
+
+  <script>
+    const maxDias = 30;
+    let dias = parseInt(localStorage.getItem('dias')) || 0;
+    const diasCount = document.getElementById('diasCount');
+    const diasBar = document.getElementById('diasBar');
+    const btnSim = document.getElementById('btnSim');
+    const humorRange = document.getElementById('humorRange');
+    const btnRegistrarHumor = document.getElementById('btnRegistrarHumor');
+
+    function updateUI() {
+      diasCount.textContent = dias;
+      diasBar.style.width = (dias / maxDias * 100) + '%';
+      diasBar.textContent = dias + '/' + maxDias + ' dias';
+    }
+
+    btnSim.addEventListener('click', () => {
+      if (dias < maxDias) {
+        dias++;
+        localStorage.setItem('dias', dias);
+        updateUI();
+      }
+    });
+
+    btnRegistrarHumor.addEventListener('click', () => {
+      const humor = humorRange.value;
+      localStorage.setItem('humor', humor);
+      alert('Humor registrado: ' + humor + '%');
+    });
+
+    updateUI();
+
+  
+    const savedHumor = localStorage.getItem('humor');
+    if (savedHumor !== null) humorRange.value = savedHumor;
+  </script>
 </body>
 </html>
