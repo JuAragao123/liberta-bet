@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e0e0e0;
+  color: #222;
+  padding: 0 16px 40px;
+}
+
+header.topo {
+  background-color: #1a1a3d;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+}
+.logo .accent {
+  color: #1de9b6;
+}
+.menu-icon {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+main.conteudo {
+  max-width: 800px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.painel {
+  background-color: #ffe6ea;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-bottom: 32px;
+}
+.painel h2 {
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+  color: #1a1a3d;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.questao {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.questao label {
+  font-weight: 600;
+  color: #222;
+}
+.opcoes {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.opcoes input {
+  margin-right: 6px;
+}
+
+.btn-finalizar {
+  align-self: center;
+  background-color: #1a1a3d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-finalizar:hover {
+  background-color: #11112b;
+}
+
+.resultado {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.resultado p {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+.alerta {
+  color: #b00020;
+  font-weight: 600;
+}
+.sucesso {
+  color: #006400;
+  font-weight: 600;
+}

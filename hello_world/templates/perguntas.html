@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>LibertaBET – Autoavaliação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e0e0e0;
+      color: #222;
+      padding: 0 16px 40px;
+    }
+
+    header.topo {
+      background-color: #1a1a3d;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .logo .accent { color: #1de9b6; }
+    .menu-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 24px auto;
+    }
+
+    .painel {
+      background-color: #ffe6ea;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .painel h2 {
+      margin-bottom: 16px;
+      font-size: 1.6rem;
+      color: #1a1a3d;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .questao {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .questao label {
+      font-weight: 600;
+    }
+    .opcoes {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .opcoes input {
+      margin-right: 6px;
+    }
+
+    .btn-finalizar {
+      align-self: center;
+      background-color: #1a1a3d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-finalizar:hover {
+      background-color: #11112b;
+    }
+
+    .resultado {
+      margin-top: 24px;
+      padding: 16px;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .resultado p {
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+    .alerta {
+      color: #b00020;
+      font-weight: 600;
+    }
+    .sucesso {
+      color: #006400;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="logo">LIBERTA <span class="accent">BET</span></div>
+    <button class="menu-btn" aria-label="Menu">☰</button>
+  </header>
+
+  <main>
+    <div class="painel">
+      <h2>Autoavaliação</h2>
+      <form id="autoForm">
+        <div class="questao">
+          <label>1. Você sente vontade de apostar mesmo quando sabe que não deve?</label>
+          <div class="opcoes">
+            <input type="radio" name="q1" value="sim" required>Sim
+            <input type="radio" name="q1" value="nao">Não
+          </div>
+        </div>
+        <div class="questao">
+          <label>2. Já ficou inquieto(a) ou irritado(a) por não poder apostar?</label>
+          <div class="opcoes">
+            <input type="radio" name="q2" value="sim" required>Sim
+            <input type="radio" name="q2" value="nao">Não
+          </div>
+        </div>
+        <div class="questao">
+          <label>3. Costuma apostar mais para tentar recuperar perdas anteriores?</label>
+          <div class="opcoes">
+            <input type="radio" name="q3" value="sim" required>Sim
+            <input type="radio" name="q3" value="nao">Não
+          </div>
+        </div>
+        <div class="questao">
+          <label>4. Alguém já criticou seus hábitos de aposta e isso lhe incomodou?</label>
+          <div class="opcoes">
+            <input type="radio" name="q4" value="sim" required>Sim
+            <input type="radio" name="q4" value="nao">Não
+          </div>
+        </div>
+        <div class="questao">
+          <label>5. Você já usou dinheiro de necessidades básicas (contas, aluguel, comida) para apostar?</label>
+          <div class="opcoes">
+            <input type="radio" name="q5" value="sim" required>Sim
+            <input type="radio" name="q5" value="nao">Não
+          </div>
+        </div>
+
+        <button type="submit" class="btn-finalizar">Finalizar Avaliação</button>
+      </form>
+
+      <div id="resultado" class="resultado" style="display:none;"></div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('autoForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      let simCount = 0;
+      for(let i=1; i<=5; i++){
+        if(this['q'+i].value === 'sim') simCount++;
+      }
+      const resultado = document.getElementById('resultado');
+      resultado.style.display = 'block';
+      if(simCount >= 3){
+        resultado.innerHTML = `
+          <p class="alerta">
+            Você respondeu "Sim" em ${simCount} de 5 perguntas.<br>
+            Recomendamos procurar ajuda profissional. Ligue para 188 ou procure um serviço especializado.
+          </p>`;
+      } else {
+        resultado.innerHTML = `
+          <p class="sucesso">
+            Você respondeu "Sim" em ${simCount} de 5 perguntas.<br>
+            Parabéns, você está indo bem! Continue atento(a) aos seus hábitos.
+          </p>`;
+      }
+      window.scrollTo({ top: resultado.offsetTop - 20, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

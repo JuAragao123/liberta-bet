@@ -4,33 +4,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LibertaBet - Início</title>
+  <title>LibertaBet – Início</title>
   <link rel="stylesheet" href="{% static 'paginainicial.css' %}">
+  <style>
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .logo .accent { color: #00e6e6; }
+
+    
+    .barra-navegacao {
+      display: flex;
+      align-items: center;
+    }
+    .barra-navegacao .menu-icon {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  
+    .barra-navegacao input,
+    .barra-navegacao .perfil {
+      display: none;
+    }
+  </style>
 </head>
-<img src="{% static 'images/logo.png' %}" alt="Logo LibertaBET">
 <body>
+
   <header class="topo">
     <div class="logo">
-      <img src="{% static 'logo.png' %}" alt="Logo LibertaBET">
+      LIBERTA <span class="accent">BET</span>
     </div>
     <nav class="barra-navegacao">
-      <button class="menu-icon">&#9776;</button>
-      <input type="text" placeholder="Buscar">
-      <button class="perfil">&#128100;</button>
+      <!-- ficou só o ícone de menu -->
+      <button class="menu-icon" aria-label="Menu">☰</button>
     </nav>
   </header>
 
+  <!-- o restante do seu layout continua igual -->
   <main class="conteudo">
     <section class="boas-vindas">
-      <h1>Bem-vindo ao <span>LibertaBET</span></h1>
+      {% if user.is_authenticated %}
+        <h1>Bem-vindo, {{ user.username|capfirst }}!</h1>
+      {% else %}
+        <h1>Bem-vindo ao <span class="accent">LibertaBET</span></h1>
+      {% endif %}
       <p>Como podemos ajudar você hoje?</p>
     </section>
 
     <section class="botoes">
-      <a class="botao" href="{% url 'depoimentos' %}">💬 Depoimentos</a>
-      <a class="botao" href="{% url 'progresso' %}">📊 Progresso</a>
-      <a class="botao" href="{% url 'apoio' %}">🫠 Ajuda e autoavaliação</a>
-      <a class="botao" href="{% url 'diferencas' %}">🏦 Investimento vs aposta</a>
+      <a class="botao depoimentos" href="{% url 'depoimentos' %}">Depoimentos</a>
+      <a class="botao progresso"   href="{% url 'progresso'   %}">Progresso</a>
+      <a class="botao apoio"       href="{% url 'apoio'       %}">Ajuda &amp; Autoavaliação</a>
+      <a class="botao diferencas"  href="{% url 'diferencas'  %}">Investimento vs Aposta</a>
     </section>
   </main>
 

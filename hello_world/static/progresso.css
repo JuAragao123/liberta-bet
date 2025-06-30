@@ -1,4 +1,3 @@
-/* Fundo geral */
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -6,7 +5,6 @@ body {
     color: #333;
 }
 
-/* Cabeçalho */
 .topo {
     background-color: #0a0a33;
     padding: 15px 30px;
@@ -40,7 +38,6 @@ body {
     cursor: pointer;
 }
 
-/* Conteúdo principal */
 .container {
     max-width: 1200px;
     margin: 50px auto;
@@ -54,14 +51,12 @@ body {
     color: #0a0a33;
 }
 
-/* Grid de telhas */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
 }
 
-/* Estilo das telhas */
 .tile {
     background: white;
     padding: 25px;
@@ -80,7 +75,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* Telhas com cor temática */
 .resumo {
     background: linear-gradient(to bottom right, #e8fce8, #f6fff6);
 }
@@ -98,7 +92,6 @@ body {
     font-style: italic;
 }
 
-/* Barra de progresso */
 .barra-progresso {
     height: 24px;
     background: #e0e0e0;
@@ -116,7 +109,6 @@ body {
     font-weight: bold;
 }
 
-/* Formulário */
 form label {
     font-weight: bold;
     display: block;
@@ -138,7 +130,6 @@ form textarea {
     resize: vertical;
 }
 
-/* Botões */
 .botoes {
     display: flex;
     gap: 10px;
@@ -171,7 +162,6 @@ form textarea {
     background-color: #27ae60;
 }
 
-/* Emoji range */
 .emoji-range {
     display: flex;
     align-items: center;

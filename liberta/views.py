@@ -1,6 +1,40 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User  # ← ESSENCIAL
+from django.contrib.auth.models import User  
 from django.contrib.auth import authenticate, login
+
+from django.shortcuts import render
+
+def autoavaliacao_view(request):
+    resultado = None
+
+    if request.method == 'POST':
+        sim_count = sum(
+            1 for i in range(1, 6)
+            if request.POST.get(f"q{i}") == "sim"
+        )
+
+        if sim_count >= 3:
+            resultado = {
+                "classe": "alerta",
+                "texto": (
+                    f'Você respondeu "Sim" em {sim_count} de 5 perguntas. '
+                    'Recomendamos procurar ajuda profissional. '
+                    'Ligue para 188 ou procure um serviço especializado.'
+                )
+            }
+        else:
+            resultado = {
+                "classe": "sucesso",
+                "texto": (
+                    f'Você respondeu "Sim" em {sim_count} de 5 perguntas. '
+                    'Parabéns, você está indo bem! Continue atento(a) aos seus hábitos.'
+                )
+            }
+
+    return render(request, "perguntas.html", {
+        "resultado": resultado
+    })
+
 
 
 usuarios = []  
@@ -15,7 +49,7 @@ def cadastro_view(request):
             return render(request, 'cadastro.html', {'erro': 'Usuário já existe'})
 
         user = User(username=usuario, email=email)
-        user.set_password(senha)  # Criptografa a senha corretamente
+        user.set_password(senha)  
         user.save()
 
         return redirect('login')
@@ -30,7 +64,7 @@ def login_view(request):
         user = authenticate(username=usuario_input, password=senha_input)
 
         if user is not None:
-            login(request, user)  # Cria a sessão
+            login(request, user)  
             return redirect('pagina_inicial')
         else:
             erro = "Usuário ou senha incorretos"

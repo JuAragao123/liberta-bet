@@ -57,7 +57,6 @@ class RespostaAutoavaliacao(models.Model):
 
 
 class Site(models.Model):
-    # Nenhum campo definido no diagrama
     def __str__(self):
         return f"Site {self.id}"
 

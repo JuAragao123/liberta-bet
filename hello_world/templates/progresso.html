@@ -1,19 +1,53 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Progresso - LibertaBET</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
+    header.topo {
+      background-color: #1a1a3d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      margin-bottom: 20px;
+    }
+    .logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5em;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .logo .accent {
+      color: #00e6e6;
+    }
+    .barra-navegacao button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.4em;
+      cursor: pointer;
+    }
+
+    .conteudo {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #e3eaf4 0%, #fdfdfd 100%);
       color: #222;
-      padding: 20px;
     }
 
     .titulo {
@@ -21,6 +55,7 @@
       font-weight: 800;
       margin-bottom: 10px;
       text-align: center;
+      padding-top: 20px;
     }
 
     .subtitulo {
@@ -34,8 +69,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
+      margin-bottom: 40px;
     }
 
     .tile {
@@ -58,7 +92,8 @@
       font-size: 1em;
     }
 
-    input[type="text"], textarea {
+    input[type="text"],
+    textarea {
       width: 100%;
       padding: 12px;
       margin-top: 8px;
@@ -72,7 +107,8 @@
       height: 100px;
     }
 
-    .botoes button, .humor-botoes button {
+    .botoes button,
+    .humor-botoes button {
       padding: 10px 20px;
       font-size: 1em;
       margin-right: 10px;
@@ -112,71 +148,106 @@
 
     .rodape {
       text-align: center;
-      margin-top: 50px;
+      margin: 50px 0;
       color: #888;
       font-size: 0.9em;
+    }
+
+    #btnRegistrarProgresso {
+      display: block;
+      margin: 0 auto 30px;
+      background-color: #1a1a3d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    #sucessoMsg {
+      display: none;
+      text-align: center;
+      font-size: 1.2em;
+      color: #006400;
+      margin-bottom: 30px;
     }
   </style>
 </head>
 <body>
-  <h1 class="titulo">Meu Progresso</h1>
-  <p class="subtitulo">Acompanhe sua jornada com sinceridade e sem julgamentos.</p>
 
-  <div class="grid">
-    <section class="tile">
-      <h2>Status Atual</h2>
-      <p><strong id="diasCount">0</strong> dias sem recaídas!</p>
-      <div class="progresso-barra">
-        <div id="diasBar" class="progresso-preenchido" style="width: 0%">0/30 dias</div>
-      </div>
-    </section>
+  <header class="topo">
+    <div class="logo">LIBERTA <span class="accent">BET</span></div>
+    <nav class="barra-navegacao">
+      <button aria-label="Menu">☰</button>
+    </nav>
+  </header>
 
-    <section class="tile">
-      <h2>Diário de recaída</h2>
-      <label>O que aconteceu?</label>
-      <input type="text" id="relato" placeholder="Descreva o episódio...">
+  <main class="conteudo">
+    <h1 class="titulo">Meu Progresso</h1>
+    <p class="subtitulo">Acompanhe sua jornada com sinceridade e sem julgamentos.</p>
 
-      <label>Como você se sentiu?</label>
-      <textarea id="sentimento" placeholder="Ex: ansioso, triste, sozinho..."></textarea>
+    <div class="grid">
+      <section id="statusTile" class="tile">
+        <h2>Status Atual</h2>
+        <p><strong id="diasCount">0</strong> dias sem recaídas!</p>
+        <div class="progresso-barra">
+          <div id="diasBar" class="progresso-preenchido" style="width: 0%">0/30 dias</div>
+        </div>
+      </section>
 
-      <label>Você recaiu?</label>
-      <div class="botoes">
-        <button id="btnSim" class="sim">Sim</button>
-        <button id="btnNao" class="nao">Não</button>
-      </div>
-    </section>
+      <section id="diarioRecaida" class="tile">
+        <h2>Diário de recaída</h2>
+        <label>O que aconteceu?</label>
+        <input type="text" id="relato" placeholder="Descreva o episódio...">
 
-    <section class="tile">
-      <h2>Como você está hoje?</h2>
-      <input type="range" id="humorRange" min="0" max="100">
-      <div class="humor-botoes">
-        <button id="btnRegistrarHumor" class="registrar">Registrar Humor</button>
-      </div>
-    </section>
+        <label>Como você se sentiu?</label>
+        <textarea id="sentimento" placeholder="Ex: ansioso, triste, sozinho..."></textarea>
 
-    <section class="tile">
-      <h2>Dica do dia</h2>
-      <p>“Você é mais forte que o impulso. Cada dia sem recaída é uma vitória.”</p>
-    </section>
-  </div>
+        <label>Você recaiu?</label>
+        <div class="botoes">
+          <button id="btnSim" class="sim">Sim</button>
+          <button id="btnNao" class="nao">Não</button>
+        </div>
+      </section>
 
-  <footer class="rodape">
-    &copy; 2025 LibertaBET
-  </footer>
+      <section id="humorTile" class="tile">
+        <h2>Como você está hoje?</h2>
+        <input type="range" id="humorRange" min="0" max="100">
+        <div class="humor-botoes">
+          <button id="btnRegistrarHumor" class="registrar">Registrar Humor</button>
+        </div>
+      </section>
+
+      <section id="dicaTile" class="tile">
+        <h2>Dica do dia</h2>
+        <p>“Você é mais forte que o impulso. Cada dia sem recaída é uma vitória.”</p>
+      </section>
+    </div>
+
+    <button id="btnRegistrarProgresso">Registrar Progresso</button>
+    <div id="sucessoMsg">Progresso registrado com sucesso!</div>
+
+    <footer class="rodape">
+      &copy; 2025 LibertaBET
+    </footer>
+  </main>
 
   <script>
     const maxDias = 30;
     let dias = parseInt(localStorage.getItem('dias')) || 0;
-    const diasCount = document.getElementById('diasCount');
-    const diasBar = document.getElementById('diasBar');
-    const btnSim = document.getElementById('btnSim');
-    const humorRange = document.getElementById('humorRange');
+
+    const diasCount         = document.getElementById('diasCount');
+    const diasBar           = document.getElementById('diasBar');
+    const btnSim            = document.getElementById('btnSim');
+    const humorRange        = document.getElementById('humorRange');
     const btnRegistrarHumor = document.getElementById('btnRegistrarHumor');
+    const btnRegistrarProg  = document.getElementById('btnRegistrarProgresso');
+    const sucessoMsg        = document.getElementById('sucessoMsg');
 
     function updateUI() {
       diasCount.textContent = dias;
-      diasBar.style.width = (dias / maxDias * 100) + '%';
-      diasBar.textContent = dias + '/' + maxDias + ' dias';
+      diasBar.style.width   = (dias / maxDias * 100) + '%';
+      diasBar.textContent   = dias + '/' + maxDias + ' dias';
     }
 
     btnSim.addEventListener('click', () => {
@@ -193,9 +264,17 @@
       alert('Humor registrado: ' + humor + '%');
     });
 
-    updateUI();
+    btnRegistrarProg.addEventListener('click', () => {
+      document.querySelectorAll('.tile').forEach(tile => {
+        if (tile.id !== 'diarioRecaida') {
+          tile.style.display = 'none';
+        }
+      });
+      btnRegistrarProg.style.display = 'none';
+      sucessoMsg.style.display = 'block';
+    });
 
-  
+    updateUI();
     const savedHumor = localStorage.getItem('humor');
     if (savedHumor !== null) humorRange.value = savedHumor;
   </script>

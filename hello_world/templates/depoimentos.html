@@ -2,54 +2,143 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Depoimentos - LibertaBET</title>
-    <link rel="stylesheet" href="{% static 'depoimentos.css' %}">
-    {% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
+  <meta charset="UTF-8">
+  <title>LibertaBet – Depoimentos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'paginainicial.css' %}">
+  <style>
+      .logo {
+      font-size: 24px;             
+      font-weight: bold;
+      text-transform: uppercase;   
+      color: #fff;                 
+    }
+    .logo .accent {
+      color: #1de9b6;              
+    }
 
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-controls button,
+    .nav-controls input {
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .nav-controls input {
+      background-color: #fff;
+      color: #333;
+      padding: 6px 10px;
+      border-radius: 6px;
+      width: 200px;
+    }
+
+    .painel {
+      background-color: #ffe6ea;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px auto;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .painel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .painel-header h2 {
+      margin: 0;
+      font-size: 22px;
+      color: #1a1a3d;
+    }
+    .painel-header .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #555;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .painel-body {
+      margin-top: 12px;
+    }
+    .painel-body .subtitulo {
+      color: #333;
+      margin-bottom: 16px;
+    }
+    
+    .painel-body .card {
+      background-color: #1a1a3d;
+      color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .painel-body .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .painel-body .card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+  </style>
 </head>
 <body>
-    <header class="topo">
-        <div class="logo">
-            <img src="{% static 'logo.png' %}" alt="Logo LibertaBET">
-        </div>
-        <nav class="barra-navegacao">
-            <button class="menu-icon">&#9776;</button>
-            <input type="text" placeholder="Buscar">
-            <button class="perfil">&#128100;</button>
-        </nav>
-    </header>
 
-    <main class="conteudo">
-        <h1 class="titulo-pagina">🗣️ <span class="destaque">Depoimentos</span></h1>
-        <p class="subtitulo">Relatos emocionantes de quem enfrentou o vício de frente:</p>
+  <header class="topo">
+    <div class="logo">LIBERTA <span class="accent">BET</span></div>
+    <nav class="barra-navegacao">
+      <button class="menu-icon" aria-label="Menu">☰</button>
+    </nav>
+  </header>
 
-        <div class="card">
-            <h2>Felipe, 28 anos</h2>
-            <p>“Achei que podia ganhar dinheiro fácil. No começo, era só diversão, mas logo virou um hábito. 
-            Perdi tudo: salário, família, paz. O vício tomou conta sem eu perceber. Me afastei de amigos, negligenciei 
-            meu trabalho e fiquei preso em dívidas...”</p>
-        </div>
+  <div class="painel">
+    <div class="painel-header">
+      <h2>Depoimentos</h2>
+      <button class="close-btn" aria-label="Fechar">×</button>
+    </div>
+    <div class="painel-body">
+      <p class="subtitulo">
+        Relatos emocionantes de quem enfrentou o vício de frente:
+      </p>
 
-        <div class="card">
-            <h2>Lucas, 22 anos</h2>
-            <p>“Começou como brincadeira. Quando vi, eu já mentia pra apostar e ficava ansioso o tempo todo. 
-            O jogo virou rotina, tomava meus pensamentos e meu tempo. Perdi a confiança das pessoas ao meu redor...”</p>
-        </div>
+      <div class="card">
+        <h3>Felipe, 28 anos</h3>
+        <p>
+          “Achei que podia ganhar dinheiro fácil. No começo, era só diversão,  
+          mas logo virou um hábito. Perdi tudo: salário, família, paz.  
+          O vício tomou conta sem eu perceber. Me afastei de amigos,  
+          negligenciei meu trabalho e fiquei preso em dívidas...”
+        </p>
+      </div>
 
-        <div class="card">
-            <h2>Mariana, 26 anos</h2>
-            <p>“Apostava pouco, mas toda derrota me fazia querer recuperar. Achei que era diversão... até virar obsessão. 
-            Me afastei de tudo que me fazia bem. A recuperação foi difícil, mas me reencontrei no processo...”</p>
-        </div>
-    </main>
+      <div class="card">
+        <h3>Lucas, 22 anos</h3>
+        <p>
+          “Começou como brincadeira. Quando vi, eu já mentia pra apostar  
+          e ficava ansioso o tempo todo. O jogo virou rotina, tomava  
+          meus pensamentos e meu tempo. Perdi a confiança das pessoas ao meu redor...”
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Mariana, 26 anos</h3>
+        <p>
+          “Apostava pouco, mas toda derrota me fazia querer recuperar.  
+          Achei que era diversão... até virar obsessão. Me afastei de tudo  
+          que me fazia bem. A recuperação foi difícil, mas me reencontrei no processo...”
+        </p>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
-
-    <form method="POST">
-    {% csrf_token %}
-    
-</form>
-
