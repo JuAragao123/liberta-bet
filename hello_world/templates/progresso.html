@@ -6,11 +6,22 @@
   <title>Progresso - LibertaBET</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Fonte e CSS global -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'paginainicial.css' %}">
 
   <style>
+    /* Reset e background */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #e3eaf4 0%, #fdfdfd 100%);
+      color: #222;
+    }
+
+    /* Cabeçalho */
     header.topo {
       background-color: #1a1a3d;
       display: flex;
@@ -20,15 +31,12 @@
       margin-bottom: 20px;
     }
     .logo {
-      font-family: 'Inter', sans-serif;
       font-size: 1.5em;
       font-weight: 800;
       text-transform: uppercase;
       color: #ffffff;
     }
-    .logo .accent {
-      color: #00e6e6;
-    }
+    .logo .accent { color: #00e6e6; }
     .barra-navegacao button {
       background: none;
       border: none;
@@ -37,92 +45,46 @@
       cursor: pointer;
     }
 
+    /* Conteúdo */
     .conteudo {
       max-width: 900px;
       margin: 0 auto;
       padding: 0 16px;
     }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(180deg, #e3eaf4 0%, #fdfdfd 100%);
-      color: #222;
-    }
-
     .titulo {
       font-size: 3em;
       font-weight: 800;
-      margin-bottom: 10px;
       text-align: center;
       padding-top: 20px;
+      margin-bottom: 10px;
     }
-
     .subtitulo {
-      margin-bottom: 40px;
+      text-align: center;
       font-size: 1.2em;
       color: #555;
-      text-align: center;
+      margin-bottom: 40px;
     }
 
+    /* Grid de tiles */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px;
       margin-bottom: 40px;
     }
-
     .tile {
       background: white;
       border-radius: 20px;
       padding: 30px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-
-    h2 {
+    .tile h2 {
       font-size: 1.8em;
-      margin-bottom: 15px;
       color: #0a0a33;
+      margin-bottom: 15px;
     }
 
-    label {
-      display: block;
-      margin-top: 20px;
-      font-weight: 600;
-      font-size: 1em;
-    }
-
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 12px;
-      margin-top: 8px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-    }
-
-    textarea {
-      resize: vertical;
-      height: 100px;
-    }
-
-    .botoes button,
-    .humor-botoes button {
-      padding: 10px 20px;
-      font-size: 1em;
-      margin-right: 10px;
-      margin-top: 15px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .sim { background-color: #008060; color: white; }
-    .nao { background-color: #ccc; color: #222; }
-    .registrar { background-color: #0057b8; color: white; }
-
+    /* Status Atual */
     .progresso-barra {
       background-color: #e0e0e0;
       height: 18px;
@@ -130,30 +92,54 @@
       overflow: hidden;
       margin-top: 15px;
     }
-
     .progresso-preenchido {
       background-color: #4caf50;
       height: 100%;
-      color: white;
       text-align: center;
       font-size: 0.9em;
       line-height: 18px;
       font-weight: 600;
+      color: white;
     }
 
-    input[type=range] {
+    /* Diário de recaída */
+    #diarioRecaida label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    #diarioRecaida input[type="text"],
+    #diarioRecaida textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .botoes {
+      margin-top: 15px;
+    }
+    .botoes button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-right: 10px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .sim { background-color: #008060; color: white; }
+    .nao { background-color: #ccc; color: #222; }
+
+    /* Humor */
+    #humorTile input[type="range"] {
       width: 100%;
       margin-top: 15px;
     }
 
-    .rodape {
-      text-align: center;
-      margin: 50px 0;
-      color: #888;
-      font-size: 0.9em;
-    }
-
-    #btnRegistrarProgresso {
+    /* Botão único */
+    #finalizarRegistro {
       display: block;
       margin: 0 auto 30px;
       background-color: #1a1a3d;
@@ -164,12 +150,45 @@
       font-size: 1em;
       cursor: pointer;
     }
+
+    /* Resumo e mensagem de sucesso */
+    #resumoProgresso {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 20px;
+    }
+    #resumoProgresso h3 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      color: #0a0a33;
+    }
+    #resumoProgresso ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    #resumoProgresso ul li {
+      margin: 6px 0;
+      font-size: 1em;
+    }
     #sucessoMsg {
       display: none;
       text-align: center;
       font-size: 1.2em;
       color: #006400;
       margin-bottom: 30px;
+    }
+
+    /* Rodapé */
+    .rodape {
+      text-align: center;
+      margin: 50px 0;
+      color: #888;
+      font-size: 0.9em;
     }
   </style>
 </head>
@@ -187,16 +206,18 @@
     <p class="subtitulo">Acompanhe sua jornada com sinceridade e sem julgamentos.</p>
 
     <div class="grid">
+      <!-- Status Atual -->
       <section id="statusTile" class="tile">
         <h2>Status Atual</h2>
         <p><strong id="diasCount">0</strong> dias sem recaídas!</p>
         <div class="progresso-barra">
-          <div id="diasBar" class="progresso-preenchido" style="width: 0%">0/30 dias</div>
+          <div id="diasBar" class="progresso-preenchido" style="width:0%">0/30 dias</div>
         </div>
       </section>
 
+      <!-- Diário de Recaída -->
       <section id="diarioRecaida" class="tile">
-        <h2>Diário de recaída</h2>
+        <h2>Diário de recorrência</h2>
         <label>O que aconteceu?</label>
         <input type="text" id="relato" placeholder="Descreva o episódio...">
 
@@ -210,21 +231,26 @@
         </div>
       </section>
 
+      <!-- Humor -->
       <section id="humorTile" class="tile">
         <h2>Como você está hoje?</h2>
         <input type="range" id="humorRange" min="0" max="100">
-        <div class="humor-botoes">
-          <button id="btnRegistrarHumor" class="registrar">Registrar Humor</button>
-        </div>
       </section>
 
+      <!-- Dica do Dia -->
       <section id="dicaTile" class="tile">
         <h2>Dica do dia</h2>
         <p>“Você é mais forte que o impulso. Cada dia sem recaída é uma vitória.”</p>
       </section>
     </div>
 
-    <button id="btnRegistrarProgresso">Registrar Progresso</button>
+    <!-- Botão único de registro -->
+    <button id="finalizarRegistro">Finalizar Registro</button>
+
+    <!-- Resumo gerado -->
+    <div id="resumoProgresso"></div>
+
+    <!-- Mensagem de sucesso -->
     <div id="sucessoMsg">Progresso registrado com sucesso!</div>
 
     <footer class="rodape">
@@ -233,50 +259,74 @@
   </main>
 
   <script>
+    // Contagem de dias
     const maxDias = 30;
     let dias = parseInt(localStorage.getItem('dias')) || 0;
-
-    const diasCount         = document.getElementById('diasCount');
-    const diasBar           = document.getElementById('diasBar');
-    const btnSim            = document.getElementById('btnSim');
-    const humorRange        = document.getElementById('humorRange');
-    const btnRegistrarHumor = document.getElementById('btnRegistrarHumor');
-    const btnRegistrarProg  = document.getElementById('btnRegistrarProgresso');
-    const sucessoMsg        = document.getElementById('sucessoMsg');
+    const diasCount = document.getElementById('diasCount');
+    const diasBar   = document.getElementById('diasBar');
 
     function updateUI() {
       diasCount.textContent = dias;
-      diasBar.style.width   = (dias / maxDias * 100) + '%';
-      diasBar.textContent   = dias + '/' + maxDias + ' dias';
+      const pct = Math.round(dias / maxDias * 100);
+      diasBar.style.width = pct + '%';
+      diasBar.textContent = `${dias}/${maxDias} dias`;
     }
 
-    btnSim.addEventListener('click', () => {
+    // Eventos de recaiu
+    let recaiu = null;
+    document.getElementById('btnSim').addEventListener('click', () => {
       if (dias < maxDias) {
         dias++;
         localStorage.setItem('dias', dias);
         updateUI();
       }
+      recaiu = true;
+    });
+    document.getElementById('btnNao').addEventListener('click', () => {
+      recaiu = false;
     });
 
-    btnRegistrarHumor.addEventListener('click', () => {
-      const humor = humorRange.value;
-      localStorage.setItem('humor', humor);
-      alert('Humor registrado: ' + humor + '%');
+    // Humor no slider
+    const humorRange = document.getElementById('humorRange');
+    // opcional: salvar humor para manter após reload
+    humorRange.addEventListener('input', () => {
+      localStorage.setItem('humor', humorRange.value);
     });
 
-    btnRegistrarProg.addEventListener('click', () => {
-      document.querySelectorAll('.tile').forEach(tile => {
-        if (tile.id !== 'diarioRecaida') {
-          tile.style.display = 'none';
-        }
-      });
-      btnRegistrarProg.style.display = 'none';
-      sucessoMsg.style.display = 'block';
-    });
-
-    updateUI();
+    // Carregar humor salvo
     const savedHumor = localStorage.getItem('humor');
-    if (savedHumor !== null) humorRange.value = savedHumor;
+    if (savedHumor !== null) {
+      humorRange.value = savedHumor;
+    }
+
+    // Finalizar registro
+    document.getElementById('finalizarRegistro').addEventListener('click', () => {
+      const relato     = document.getElementById('relato').value.trim() || '—';
+      const sentimento = document.getElementById('sentimento').value.trim() || '—';
+      const humor      = localStorage.getItem('humor') || humorRange.value;
+      const diasText   = diasCount.textContent;
+
+      // Monta o resumo
+      const resumoHTML = `
+        <h3>Resumo do dia</h3>
+        <ul>
+          <li><strong>Dias sem recaída:</strong> ${diasText}</li>
+          <li><strong>Relato:</strong> ${relato}</li>
+          <li><strong>Sentimento:</strong> ${sentimento}</li>
+          <li><strong>Recaída:</strong> ${recaiu === null ? '—' : (recaiu ? 'Sim' : 'Não')}</li>
+          <li><strong>Humor:</strong> ${humor}%</li>
+        </ul>
+      `;
+      document.getElementById('resumoProgresso').innerHTML = resumoHTML;
+
+      // Esconde formulário e mostra mensagem
+      document.querySelector('.grid').style.display = 'none';
+      document.getElementById('finalizarRegistro').style.display = 'none';
+      document.getElementById('sucessoMsg').style.display = 'block';
+    });
+
+    // Inicializa UI
+    updateUI();
   </script>
 </body>
 </html>

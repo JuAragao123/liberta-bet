@@ -7,16 +7,26 @@
   <title>LibertaBet – Início</title>
   <link rel="stylesheet" href="{% static 'paginainicial.css' %}">
   <style>
-    
+    /* Cabeçalho padronizado */
+    header.topo {
+      background-color: #1a1a3d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
     .logo {
       font-size: 24px;
       font-weight: bold;
       text-transform: uppercase;
       color: #ffffff;
     }
-    .logo .accent { color: #00e6e6; }
+    .logo .accent {
+      color: #00e6e6;
+    }
 
-    
     .barra-navegacao {
       display: flex;
       align-items: center;
@@ -28,10 +38,59 @@
       font-size: 24px;
       cursor: pointer;
     }
-  
     .barra-navegacao input,
     .barra-navegacao .perfil {
       display: none;
+    }
+
+    /* Botões e layout principal */
+    .conteudo {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    .boas-vindas {
+      background-color: #ffffff;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      padding: 30px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .boas-vindas h1 {
+      font-size: 2em;
+      margin-bottom: 12px;
+    }
+    .boas-vindas p {
+      font-size: 1em;
+      color: #555;
+    }
+
+    .botoes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .botoes .botao {
+      display: block;
+      width: 80%;
+      max-width: 500px;
+      padding: 16px 0;
+      font-size: 1em;
+      background-color: #ffffff;
+      color: #1a1a3d;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .botoes .botao:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     }
   </style>
 </head>
@@ -42,27 +101,25 @@
       LIBERTA <span class="accent">BET</span>
     </div>
     <nav class="barra-navegacao">
-      <!-- ficou só o ícone de menu -->
       <button class="menu-icon" aria-label="Menu">☰</button>
     </nav>
   </header>
 
-  <!-- o restante do seu layout continua igual -->
   <main class="conteudo">
     <section class="boas-vindas">
       {% if user.is_authenticated %}
-        <h1>Bem-vindo, {{ user.username|capfirst }}!</h1>
+        <h1>Bem-vindo(a), {{ user.username|capfirst }}!</h1>
       {% else %}
-        <h1>Bem-vindo ao <span class="accent">LibertaBET</span></h1>
+        <h1>Bem-vindo(a) ao <span class="accent">LibertaBET</span>!</h1>
       {% endif %}
       <p>Como podemos ajudar você hoje?</p>
     </section>
 
     <section class="botoes">
-      <a class="botao depoimentos" href="{% url 'depoimentos' %}">Depoimentos</a>
-      <a class="botao progresso"   href="{% url 'progresso'   %}">Progresso</a>
-      <a class="botao apoio"       href="{% url 'apoio'       %}">Ajuda &amp; Autoavaliação</a>
-      <a class="botao diferencas"  href="{% url 'diferencas'  %}">Investimento vs Aposta</a>
+      <a class="botao" href="{% url 'depoimentos' %}">Depoimentos</a>
+      <a class="botao" href="{% url 'progresso'   %}">Progresso</a>
+      <a class="botao" href="{% url 'apoio'       %}">Ajuda &amp; Autoavaliação</a>
+      <a class="botao" href="{% url 'diferencas'  %}">Investimento vs Aposta</a>
     </section>
   </main>
 

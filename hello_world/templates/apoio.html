@@ -6,30 +6,37 @@
   <title>LibertaBET – Apoio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
   <link rel="stylesheet" href="{% static 'paginainicial.css' %}">
 
   <style>
-    header.topo {
-      background-color: #1a1a3d;
+    /* Cabeçalho padrão */
+    .navbar {
+      background-color: #1a1a3b;
+      color: white;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 24px;
-      width: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
+
     .logo {
       font-size: 24px;
       font-weight: bold;
       text-transform: uppercase;
-      color: #fff;
+      color: white;
     }
-    .logo .accent { color: #1de9b6; }
+
+    .logo .highlight {
+      color: #00f7ff;
+    }
+
     .menu-icon {
+      font-size: 24px;
       background: none;
       border: none;
-      color: #fff;
-      font-size: 1.5rem;
+      color: white;
       cursor: pointer;
     }
 
@@ -46,15 +53,18 @@
       margin-bottom: 24px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
+
     .painel-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .painel-header strong {
       font-size: 18px;
       color: #222;
     }
+
     .close-btn {
       background: none;
       border: none;
@@ -63,14 +73,17 @@
       cursor: pointer;
       line-height: 1;
     }
+
     .painel-body {
       margin-top: 12px;
       text-align: left;
     }
+
     .painel-body p {
       margin-bottom: 12px;
       color: #333;
     }
+
     .painel-body input {
       width: 100%;
       padding: 10px 12px;
@@ -95,11 +108,18 @@
       margin-right: 8px;
     }
 
+    #resposta-chat {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #1a1a3d;
+    }
+
     .rodape {
       margin-top: 32px;
       font-size: 0.9em;
       color: #555;
     }
+
     .rodape div {
       display: flex;
       align-items: center;
@@ -110,27 +130,32 @@
 </head>
 <body>
 
-  <header class="topo">
-    <div class="logo">LIBERTA <span class="accent">BET</span></div>
-    <button class="menu-icon" aria-label="Menu">☰</button>
+  <!-- Cabeçalho -->
+  <header class="navbar">
+    <div class="logo">LIBERTA <span class="highlight">BET</span></div>
+    <div class="menu-icon">&#9776;</div>
   </header>
 
   <main class="conteudo">
 
+    <!-- Painel do Chat -->
     <div class="painel">
       <div class="painel-header">
         <strong>Chat</strong>
         <button class="close-btn" aria-label="Fechar">×</button>
       </div>
       <div class="painel-body">
-        <p>Entre em contato conosco</p>
+        <!-- Mensagem mais curta e brega -->
+        <p>Receba uma mensagem especial hoje!</p>
         <input id="chat-input" type="text" placeholder="Digite aqui...">
         <button id="btn-registrar-chat" class="btn-registrar" type="button">
           Registrar
         </button>
+        <p id="resposta-chat"></p>
       </div>
     </div>
 
+    <!-- Painel de Autoavaliação -->
     <div class="painel">
       <div class="painel-header">
         <strong>Autoavaliação</strong>
@@ -145,6 +170,7 @@
       </div>
     </div>
 
+    <!-- Rodapé -->
     <div class="rodape">
       <div><i class="bi bi-instagram"></i>@ia.apostador</div>
       <div><i class="bi bi-link-45deg"></i>https://missaoreviver.com.br</div>
@@ -153,13 +179,34 @@
 
   </main>
 
+  <!-- Script do Chat com mensagens de apoio aleatórias -->
   <script>
     const chatInput = document.getElementById('chat-input');
     const btnRegistrar = document.getElementById('btn-registrar-chat');
+    const respostaChat = document.getElementById('resposta-chat');
+
+    const mensagens = [
+      "Obrigado por compartilhar. Lembre-se: cada passo conta. Se precisar conversar, procure alguém de confiança ou um profissional.",
+      "Entendo como se sente. Respire fundo e saiba que você não está sozinho(a). Falar sobre isso é um grande avanço.",
+      "É corajoso dividir seu relato. Se sentir que precisa de mais ajuda, fale com amigos, família ou um especialista.",
+      "Reconhecer o que aconteceu já é um passo importante. Cuide-se e busque apoio sempre que precisar.",
+      "Obrigado por abrir seu coração aqui. Se a ansiedade aumentar, tente uma pausa e converse com alguém em quem confie.",
+      "Compartilhar isso mostra força. Se achar que precisa de suporte extra, considere grupos de apoio ou ajuda profissional.",
+      "Sua mensagem foi registrada com sucesso. Lembre-se: buscar ajuda faz parte do processo de superação."
+    ];
 
     btnRegistrar.addEventListener('click', () => {
-      chatInput.value = '';
+      const mensagem = chatInput.value.trim();
+
+      if (mensagem !== "") {
+        const idx = Math.floor(Math.random() * mensagens.length);
+        respostaChat.textContent = mensagens[idx];
+        chatInput.value = "";
+      } else {
+        respostaChat.textContent = "Por favor, digite uma mensagem antes de registrar.";
+      }
     });
   </script>
+
 </body>
 </html>

@@ -88,17 +88,45 @@
       font-size: 16px;
       line-height: 1.5;
     }
-    
+    .navbar {
+    background-color: #1a1a3b;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.logo .highlight {
+    color: #00f7ff;
+}
+
+.menu-icon {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
   </style>
 </head>
 <body>
 
-  <header class="topo">
-    <div class="logo">LIBERTA <span class="accent">BET</span></div>
-    <nav class="barra-navegacao">
-      <button class="menu-icon" aria-label="Menu">☰</button>
-    </nav>
-  </header>
+ <header class="navbar">
+  <div class="logo">LIBERTA <span class="highlight">BET</span></div>
+  <div class="menu-icon">&#9776;</div>
+</header>
+
 
   <div class="painel">
     <div class="painel-header">

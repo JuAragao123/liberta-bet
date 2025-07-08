@@ -5,15 +5,6 @@ body {
     color: #333;
 }
 
-.topo {
-    background-color: #0a0a33;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
 
 .logo img {
     height: 45px;
@@ -108,4 +99,33 @@ body {
     margin-top: 10px;
     color: #444;
     text-align: justify;
+}
+.navbar {
+    background-color: #1a1a3b; /* tom azul mais escuro padronizado */
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.logo .highlight {
+    color: #00f7ff;
+}
+
+.menu-icon {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
